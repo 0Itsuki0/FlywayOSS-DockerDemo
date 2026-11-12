@@ -1,0 +1,31 @@
+# https://documentation.red-gate.com/flyway/reference/configuration
+id = "flyway_demo"
+name = "flyway demo"
+databaseType = "PostgreSql"
+
+[flyway]
+# https://documentation.red-gate.com/fd/flyway-locations-setting-277579008.html
+# S3: Locations starting with s3: point to a bucket in AWS S3, may only contain SQL migrations, and are scanned recursively. They are in the format s3:<bucket>(/optionalfolder/subfolder).
+# To use AWS S3, the AWS SDK v2 and dependencies must be included, and configured for your S3 account.
+# when using a file path, the path relative to the workingDirectory if set, otherwise the path relative to PWD
+locations = ["filesystem:migrations"]
+schemas = ["public"]
+validateMigrationNaming = true
+cleanDisabled = false
+# baselineDescription = "Initial baseline from existing schema"
+# baselineOnMigrate = false
+# baselineVersion = "1"
+
+[environments.default]
+# IP Address of the database host:
+# can be obtained with `ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'` for localhost
+url = "jdbc:postgresql://xxx.xxx.x.x:5432/postgres"
+user = "postgres"
+password = "postgres"
+
+
+# example of connecting to RDS with SSL/TLS
+[environments.rds]
+url = "jdbc:postgresql://my-postgres-instance.123456789012.us-west-2.rds.amazonaws.com:5432/postgres?ssl=true&sslmode=verify-full&sslrootcert=${env.CERT_FILE_PATH}"
+user = "postgres"
+password = "postgres"
