@@ -9,7 +9,7 @@ To use the Dockerfile for managing postgres Schema Migration of an RDS,
 2. Create a Fargate task definition from it.
 3. Run it as a one-off task (aws ecs run-task) with a command override like ["-environment=rds", "migrate"]. The image's entrypoint is already flyway, so the override is only the arguments.
 
-For more details, please refer to my blog [Manage Postgres Schema Migration with Flyway OSS]()
+For more details, please refer to my blog [Manage Postgres Schema Migration with Flyway OSS](https://medium.com/@itsuki.enjoy/manage-postgres-schema-migration-with-flyway-oss-1d3c59a10359)
 
 ## Install Flyway
 
